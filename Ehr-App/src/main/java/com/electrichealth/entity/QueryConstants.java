@@ -1,0 +1,11 @@
+package com.electrichealth.entity;
+
+public interface QueryConstants {
+
+	String QUERY_PATIENT_SEARCH = "QUERY_PATIENT_SEARCH";
+	String QUERY_AllERY_SEARCH = "QUERY_ALLERY_SEARCH";
+	// String QUERY_LIST_PATIENTS = "QUERY_LIST_PATIENTS";
+	String QUERY_LIST_ALLERGY = "QUERY_LIST_ALLERGY";
+	String QUERY_FIND_PATIENT = "QUERY_FIND_PATIENT";
+
+}

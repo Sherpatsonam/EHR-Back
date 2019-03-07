@@ -1,0 +1,238 @@
+send
+{
+  "firstName": "John",
+  "middleName":"tss",
+  "lastName": "Sonam",
+  "gender": "male",
+  "dob": "1991-01-02",
+  "status": "active",
+   
+ 
+    "address": {"street":"207","city":"dallas","state":"TX","zipCode":78900},
+  "contactInfo": {"email":"mahesh@gmail.com", "homePhone":90345678, "cellPhone":42957589, "method":"email"},
+"patAll":[{ "allergyId":12345}]
+
+}
+
+receive
+{
+    "id": 1186,
+    "firstName": "John",
+    "middleName": "tss",
+    "lastName": "Sonam",
+    "gender": "male",
+    "dob": "1991-01-02",
+    "status": "active",
+    "dateCreated": "2017-10-31",
+    "dateModified": null,
+    "patientCode": 1509489777562,
+    "address": {
+        "street": "207",
+        "city": "dallas",
+        "state": "TX",
+        "zipCode": 78900
+    },
+    "contactInfo": {
+        "email": "mahesh@gmail.com",
+        "homePhone": 90345678,
+        "cellPhone": 42957589,
+        "method": "email"
+    },
+    "patAll": [
+        {
+            "patientAllergyId": 1187,
+            "allergyId": 12345,
+            "patientId": 1186,
+            "dateCreated": "2017-10-31"
+        }
+    ]
+}
+c:\springboot-app> mvn spring-boot:run -Dserver.port=8090
+http://localhost:8090/patient/search?firstName=aaaaaaa&zipCode=7890&gender=male&dob=1991-01-02
+
+//if u use SEarchPatientsReults->
+@GET
+	@Path("/search")
+	public Response search(@QueryParam("firstName") final String firstName,@QueryParam("zipCode") final Long zipCode, @QueryParam("gender")final String gender,@QueryParam("dob") final String dob ) {
+		final List<PatientData> patientResult = ps.searchPatient(firstName, zipCode, gender, dob);
+		   
+			PatientSearchResults entity = new PatientSearchResults(patientResult);
+			return Response.ok().entity(entity).build();
+		  
+	
+	
+	}
+angular patient.service.ts
+        /*getPatients(firstname:String, zipCode:number, gender:String, dob:String):Observable<IPatient[]>{
+            return this.http.get(this._url+'patient/search?firstName='+firstname+'&zipCode='+zipCode+'&gender='+gender+'&dob='+dob).map((response:Response)=><IPatient[]> (response.json().patients))
+            .do((data)=>console.log(data));
+        }*/{"patients":[{}]}
+
+[{"patients": [{
+"id": 1508903974182,
+"firstName": "aaaaaaa",
+"middleName": "tss",
+"lastName": "Sonam",
+"gender": "male",
+"dob": "1991-01-02",
+"status": "active",
+"dateCreated": "2017-12-12",
+"dateModified": "2017-11-11",
+"patientCode": 123456789,
+"address": {
+"street": "207",
+"city": "dallas",
+"state": "TX",
+"zipCode": 78900
+},
+"contactInfo": {
+"email": "mahesh@gmail.com",
+"homePhone": 90345678,
+"cellPhone": 42957589,
+"method": "email"
+}
+},
+  {
+"id": 1508903844744,
+"firstName": "aaaaaaa",
+"middleName": "tss",
+"lastName": "Sonam",
+"gender": "male",
+"dob": "1991-01-02",
+"status": "active",
+"dateCreated": "2017-12-12",
+"dateModified": "2017-11-11",
+"patientCode": 123456789,
+"address": {
+"street": "207",
+"city": "dallas",
+"state": "TX",
+"zipCode": 78900
+},
+"contactInfo": {
+"email": "mahesh@gmail.com",
+"homePhone": 90345678,
+"cellPhone": 42957589,
+"method": "email"
+}
+}
+]
+
+//if u dontuse SEarchPatientsReults->
+
+@GET
+	@Path("/search")
+	public Response search(@QueryParam("firstName") final String firstName,@QueryParam("zipCode") final Long zipCode, @QueryParam("gender")final String gender,@QueryParam("dob") final String dob ) {
+		final List<PatientData> patientResult = ps.searchPatient(firstName, zipCode, gender, dob);
+		 
+		return Response.ok().entity(patientResult).build();
+	
+	}
+angular patient.service.ts
+
+        /*getPatients(firstname:String, zipCode:number, gender:String, dob:String):Observable<IPatient[]>{
+            return this.http.get(this._url+'patient/search?firstName='+firstname+'&zipCode='+zipCode+'&gender='+gender+'&dob='+dob).map((response:Response)=><IPatient[]> response.json())
+            .do((data)=>console.log(data));
+        }*/
+
+[
+  {
+"id": 1508903974182,
+"firstName": "aaaaaaa",
+"middleName": "tss",
+"lastName": "Sonam",
+"gender": "male",
+"dob": "1991-01-02",
+"status": "active",
+"dateCreated": "2017-12-12",
+"dateModified": "2017-11-11",
+"patientCode": 123456789,
+"address": {
+"street": "207",
+"city": "dallas",
+"state": "TX",
+"zipCode": 78900
+},
+"contactInfo": {
+"email": "mahesh@gmail.com",
+"homePhone": 90345678,
+"cellPhone": 42957589,
+"method": "email"
+}
+},
+  {
+"id": 1508903844744,
+"firstName": "aaaaaaa",
+"middleName": "tss",
+"lastName": "Sonam",
+"gender": "male",
+"dob": "1991-01-02",
+"status": "active",
+"dateCreated": "2017-12-12",
+"dateModified": "2017-11-11",
+"patientCode": 123456789,
+"address": {
+"street": "207",
+"city": "dallas",
+"state": "TX",
+"zipCode": 78900
+},
+"contactInfo": {
+"email": "mahesh@gmail.com",
+"homePhone": 90345678,
+"cellPhone": 42957589,
+"method": "email"
+}
+}
+]
+
+
+
+
+{
+    "id": 1151,
+    "firstName": "Jgfdhdf",
+    "middleName": "fdghgfdh",
+    "lastName": "dfhggfh",
+    "gender": "male",
+    "dob": "1991-01-02",
+    "status": "active",
+    "dateCreated": "2017-10-30",
+    "dateModified": "2017-11-11",
+    "patientCode": 1509389819639,
+    "address": {
+        "street": "TX",
+        "city": "dallas",
+        "state": "TX",
+        "zipCode": 78900
+    },
+    "contactInfo": {
+        "email": "mahesh@gmail.com",
+        "homePhone": 90345678,
+        "cellPhone": 42957589,
+        "method": "email"
+    },
+    "patAll": [
+        {
+            "patientAllergyId": 1152,
+            "allergyId": 23456,
+            "patientId": 1151,
+            "dateCreated": "2017-10-30"
+        }
+    ]
+}
+{
+    "allergyCode": 1111,
+    "allergyDescription": "Pollen Allergy",
+    "allergyId": 12345
+}
+
+
+
+
+
+
+
+
+
+
